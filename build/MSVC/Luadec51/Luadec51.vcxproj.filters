@@ -114,9 +114,6 @@
     <ClCompile Include="..\..\..\luadec\output.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\luadec\print.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\luadec\proto.c">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -124,6 +121,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\luadec\structs.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\luadec\ldprint.c">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

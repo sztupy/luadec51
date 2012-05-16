@@ -42,7 +42,7 @@ StringBuffer *errorStr;
  */
 
 char* getupval(Function * F, int r) {
-	if (F->f->upvalues) {
+	if (F->f->upvalues && r < F->f->sizeupvalues) {
 		return (char*)getstr(F->f->upvalues[r]);
 	} else {
 		char* s = malloc(20);

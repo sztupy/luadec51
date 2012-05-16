@@ -79,7 +79,7 @@
     <ClCompile Include="..\..\..\luadec\guess.c" />
     <ClCompile Include="..\..\..\luadec\luadec.c" />
     <ClCompile Include="..\..\..\luadec\output.c" />
-    <ClCompile Include="..\..\..\luadec\print.c" />
+    <ClCompile Include="..\..\..\luadec\ldprint.c" />
     <ClCompile Include="..\..\..\luadec\proto.c" />
     <ClCompile Include="..\..\..\luadec\StringBuffer.c" />
     <ClCompile Include="..\..\..\luadec\structs.c" />
