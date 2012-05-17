@@ -835,6 +835,10 @@ void SetList(Function * F, int a, int b, int c)
 {
    int i;
    DecTable *tbl = (DecTable *) LastItem(&(F->tables));
+   if (tbl == NULL) {
+	  SET_ERROR(F,"No list found. Setlist fails");
+      return;
+   }
    if (tbl->reg != a) {
       SET_ERROR(F,"Unhandled construct in list");
       return;
@@ -1655,7 +1659,17 @@ char* ProcessCode(const Proto * f, int indent)
          }
       case OP_NEWTABLE:
          {
-            TRY(StartTable(F, a, b, c));
+			 Instruction i2 = code[pc+1];
+			 OpCode o2 = GET_OPCODE(i2);
+			 Instruction i3 = code[pc+2];
+			 OpCode o3 = GET_OPCODE(i3);
+			 // if the next value is VARARG followed by a SETLIST this is probably a "{...}" construct
+			 if (o2==OP_VARARG && o3==OP_SETLIST) {
+				 TRY(Assign(F, REGISTER(a), "{...}", a, 0, 1));
+				 ignoreNext = 2;
+			 } else {
+			     TRY(StartTable(F, a, b, c));
+			 }
             break;
          }
       case OP_SELF:
@@ -2436,11 +2450,20 @@ void luaU_disassemble(const Proto* fwork, int dflag, int functions, char* name) 
 				 strcat(lend,"nil");
          break;
 		  case OP_VARARG:
-				 sprintf(line,"%c%d %c%d",CC(a),CV(a),CC(b),CV(b));
+			     if (b==0) {
+					 sprintf(line,"%c%d 0",CC(a),CV(a));
+				 } else {
+					sprintf(line,"%c%d %c%d",CC(a),CV(a),CC(b),CV(b));
+				 }
 				 sprintf(lend,"");
-				 for (l=a; l<=b; l++) {
-					 sprintf(tmp,"R%d := ", l);
-						strcat(lend,tmp);
+				 if (b==0) {
+					sprintf(tmp,"R%d := ", a);
+					strcat(lend,tmp);
+				 } else {
+					 for (l=a; l<=b; l++) {
+						 sprintf(tmp,"R%d := ", l);
+							strcat(lend,tmp);
+					 }
 				 }
 				 strcat(lend,"...");
          break;
