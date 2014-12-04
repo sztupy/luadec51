@@ -1,1 +1,13 @@
-Put the lua 5.1.x src folder in this directory
+Please put the contents of the lua source distribution folder in this directory. The whole project should look like this:
+
+    /
+    |-- build    # luadec build scripts
+    |-- compare  # compare ruby scripts
+    |-- lua      # lua's distribution
+    |   |-- doc
+    |   |-- etc
+    |   |-- src  # lua distribution source files
+    |   +-- test
+    +-- luadec   # luadec source files
+
+
