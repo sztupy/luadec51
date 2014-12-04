@@ -1,5 +1,4 @@
 
-#include "proto.h"
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -9,6 +8,7 @@
 #define LUA_OPNAMES
 #endif
 
+#include "proto.h"
 #include "ldebug.h"
 #include "lobject.h"
 #include "lopcodes.h"
