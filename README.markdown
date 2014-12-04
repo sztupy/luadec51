@@ -45,26 +45,26 @@ This should decompile filename.luac to filename.lua
 To disassemble a file use the -dis option:
 
     luadec -dis filename.luac
-    
+
 There are some more options, usually for debug purposes, or for cases where the built in local guesser guesses wrong.
 Use -h to get a complete list of usable parameters
 
 Download
 --------
 
-The source code of LuaDec 5.1 and windows binaries can be downloaded from its GitHub page.
+The source code of LuaDec 5.1 and windows binaries can be downloaded from the GitHub page. You can find windows binaries under
+the Releases tab. You might need to have the Visual Studio 2013 C++ redistributables installed for the project to work.
 
 Compiling
 ---------
 
-The source code of luadec51 does not contain any project files or Makefiles. It also depends on the lua 5.1 source codes,
-which are not included as well (so you might use any lua 5.1 version).
-
-To compile, grab the lua 5.1 source codes, and compile luadec51 source files with them. Alternatively you might modify
-lua's Makefile to add luadec files to its compilation list
+You need to download a version of lua you want to use, and put it into the lua directory. After that you can use the Makefile
+in the build directory to compile both projects. Alternatively there is also an MSVC directory which contains a Visual Studio 2013
+project file you can use to compile luadec.
 
 There is also a set up luadec project for MSVC++ 2008, that uses a modified lua 5.1.4 version with unicode support at
-http://winmo.sztupy.hu/luadec.html. Do not use this project tree for generic lua, because it won't work
+http://winmo.sztupy.hu/luadec.html. Do not use this project tree for usage with generic lua files, because it won't work (it
+will expect numerals in Q24.8 format, and strings in unicode)
 
 Binaries
 --------
@@ -78,6 +78,13 @@ If you have compiled luadec for some other lua 5.1 version or operating system, 
 so I can add them to the project
 
 Changelog
+
+LuaDec 2.0.2 [4/Dec/2014]
+* Minor fixes for the `{...}` construct
+* Makefile for generic builds
+
+LuaDec 2.0.1 [17/May/2012]
+* Fixes for handling unknown upvalues
 
 LuaDec 2.0 [10/Mar/2009]
 * LuaDec has now a built-in heuristic to determine local declaration and releases
