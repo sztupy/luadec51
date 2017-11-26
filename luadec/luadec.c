@@ -344,6 +344,9 @@ int luaU_guess_locals(Proto * f, int main);
 
 int main(int argc, char* argv[])
 {
+#if defined(_WIN32)
+	_setmode(0, 0x8000);
+#endif
 	int oargc;
 	char** oargv;
 	char tmp[256];
