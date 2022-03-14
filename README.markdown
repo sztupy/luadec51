@@ -24,7 +24,7 @@ Current version is 2.0
 Currently luadec51 can decompile most constructs of lua scripts, including scripts that have debug informations stripped. It still has some shortcomings:
 * Complex conditional expressions usually break the output
 * while and repeat..until loops are unhandled
-* The local decalration guesser usually guesses locals declaring NEWTABLE and SETLIST opcodes wrong
+* The local declaration guesser usually guesses locals declaring NEWTABLE and SETLIST opcodes wrong
 
 Planned for luadec 3.0:
 * A new conditional handling engine
